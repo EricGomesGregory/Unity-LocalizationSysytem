@@ -19,22 +19,21 @@ public class LocalizationManager : ScriptableObject
     public delegate void LanguageSwitch();
     public event LanguageSwitch OnLanguageSwitch;
 
-    public void NextLanguage()
+    public void ChangeLanguage(int i)
     {
-        var language = activeLanguage + 1;
-        if ((int)language == Enum.GetValues(typeof(Languages)).Length) { language = 0; }
+        var language = activeLanguage + i;
+        //language = (Languages)Mathf.Clamp((int)language, 0, Enum.GetValues(typeof(Languages)).Length - 1);
+        language = (Languages)((int)language % Enum.GetValues(typeof(Languages)).Length);
+
         activeLanguage = language;
 
         if (OnLanguageSwitch != null) OnLanguageSwitch();
     }
 
-    public void PreviousLanguage()
+    public void ChangeToLanguage(int language)
     {
-        var language = activeLanguage - 1;
-        if ((int)language == -1) { language = (Languages)Enum.GetValues(typeof(Languages)).Length - 1; }
-        activeLanguage = language;
-
-        if (OnLanguageSwitch != null) OnLanguageSwitch.Invoke();
+        activeLanguage = (Languages)language;
+        if (OnLanguageSwitch != null) OnLanguageSwitch();
     }
 }
 

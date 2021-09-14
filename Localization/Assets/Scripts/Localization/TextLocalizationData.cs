@@ -6,23 +6,23 @@ using System;
 using TMPro;
 
 [Serializable]
-public class LanguageData
+public class TextData
 {
     [TextArea(10, 15)]
     public string text;
     public TMP_FontAsset font;
 
-    public LanguageData(string defaultText)
+    public TextData(string defaultText)
     {
         text = defaultText;
         font = null;
     }
 }
 
-[CreateAssetMenu(fileName = "Loclized Text", menuName = "Localization/Text Data")]
+[CreateAssetMenu(fileName = "Loclized Text", menuName = "Localization/Data/Text")]
 public class TextLocalizationData : ScriptableObject
 {
-    public LanguageData english = new LanguageData("Default");
-    public LanguageData portuguese = new LanguageData("Padrão");
-    public LanguageData japanese = new LanguageData("デフォルト");
+    public TextData english = new TextData("Default");
+    public TextData portuguese = new TextData("Padrão");
+    public TextData japanese = new TextData("デフォルト");
 }

@@ -13,12 +13,12 @@ public class LocalizationManagerEditor : Editor
         LocalizationManager script = (LocalizationManager)target;
         if (GUILayout.Button("Next Language"))
         {
-            script.NextLanguage();
+            script.ChangeLanguage(1);
         }
 
         if (GUILayout.Button("Previous Language"))
         {
-            script.PreviousLanguage();
+            script.ChangeLanguage(-1);
         }
     }
 }
